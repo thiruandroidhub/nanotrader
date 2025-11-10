@@ -1,8 +1,8 @@
 package com.nanotrader.messaging;
 
 import io.aeron.Aeron;
-import io.aeron.Subscription;
 import io.aeron.FragmentAssembler;
+import io.aeron.Subscription;
 import io.aeron.logbuffer.FragmentHandler;
 import org.agrona.concurrent.Agent;
 import org.agrona.concurrent.AgentRunner;
@@ -19,11 +19,13 @@ public class AeronSubscriber implements Runnable {
 
     @Override
     public void run() {
-        FragmentHandler handler = new FragmentAssembler((buffer, offset, length, header) -> {
-            long sentTime = buffer.getLong(offset);
-            long now = System.nanoTime();
-            latencyStats.record(now - sentTime);
-        });
+        FragmentHandler handler = new FragmentAssembler(
+                (buffer, offset, length, header) -> {
+                    long sentTime = buffer.getLong(offset);
+                    long now = System.nanoTime();
+                    latencyStats.record(now - sentTime);
+                }
+        );
 
         Agent agent = new Agent() {
             @Override
