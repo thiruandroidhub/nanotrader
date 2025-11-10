@@ -1,7 +1,0 @@
-com/nanotrader/messaging/LatencyStats.class
-com/nanotrader/engine/MarketDataHandler.class
-com/nanotrader/messaging/AeronSubscriber$1.class
-com/nanotrader/NanoTraderApp.class
-com/nanotrader/engine/OrderEngine.class
-com/nanotrader/messaging/AeronSubscriber.class
-com/nanotrader/messaging/AeronPublisher.class
